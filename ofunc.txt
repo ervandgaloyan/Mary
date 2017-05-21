@@ -1,0 +1,8 @@
+привет : privet
+включи свет : light_ON
+включай свет : light_ON
+выключи свет : light_OFF
+открывай дверь : door_open
+закрывай дверь : door_close
+пока : close_all
+
