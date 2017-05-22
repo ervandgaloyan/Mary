@@ -123,7 +123,7 @@ def get_vol():
 def set_vol(vol):
 	return mixer.music.set_volume(vol)	
 def synch_server():
-	return 0
+	return 1
 text_to_func = {
 		"light_on" : f.__light_ON__,
 		"light_off" : f.__light_OFF__,
