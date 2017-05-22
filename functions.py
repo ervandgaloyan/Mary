@@ -54,3 +54,11 @@ def __volumeDown__():
 	m_f.set_vol(float("%.5f" % (m_f.get_vol()-m_f.get_vol()/2)))
 	print(m_f.get_vol())
 	return 0	
+
+def __update__():
+	m_f.api_other_write("func",m_f.api_other("func"))
+	m_f.api_other_write("answers",m_f.api_other("answers"))
+	m_f.say("обнавила")
+	time.sleep(1)
+	m_f.restart()
+	return 0

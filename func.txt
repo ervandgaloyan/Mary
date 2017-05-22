@@ -1,8 +1,8 @@
 включай свет : light_on
+открой дверь : door_open
 включи свет : light_on
 выключи свет : light_off
 выключай свет : light_off
-открой дверь : door_open
 закрой дверь : door_close
 пока : by
 анекдот : anecdot
@@ -10,3 +10,5 @@
 погромче : vol_up
 тише : vol_down
 потише : vol_down
+обнавить : update
+обнави : update

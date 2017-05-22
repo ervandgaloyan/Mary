@@ -7,12 +7,12 @@ import main_func as m_f
 
 import random
 
+
 func_arr = m_f.txt_read('func.txt')
 answer = m_f.txt_read_dict('answers.txt')
 
 for s in answer:
 	answer[s] = answer.get(s).split(',')
-
 
 while True:
 	rec = input(" - ")

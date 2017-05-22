@@ -5,6 +5,8 @@ import speech_recognition as sr
 import time
 from pygame import mixer
 import functions as f
+import urllib.request, json 
+import os, sys
 
 dont_say = 0
 mixer.init()
@@ -107,7 +109,7 @@ def say(name_origin):
 		finally:
 			mixer.music.play()
 			while mixer.music.get_busy():
-				time.sleep(0.1)
+				time.sleep(0.2)
 	return 0
 
 def say_update(word):
@@ -122,8 +124,22 @@ def get_vol():
 	return mixer.music.get_volume()
 def set_vol(vol):
 	return mixer.music.set_volume(vol)	
-def synch_server():
-	return 1
+
+def api_other(file):
+	with urllib.request.urlopen("http://web-world.gq/api/other.php?file=" + file) as url:
+		data = json.loads(url.read().decode())
+	return data
+def api_other_write(file,data):
+	file = open(file+".txt", "w")
+	for d in data:
+		file.write(d["query"] + " : " + d["answer"] + "\n")
+	file.close()
+	return 0
+
+def restart():
+	python = sys.executable
+	os.execl(python,python, * sys.argv)
+
 text_to_func = {
 		"light_on" : f.__light_ON__,
 		"light_off" : f.__light_OFF__,
@@ -132,7 +148,8 @@ text_to_func = {
 		"by" : f.__close_all__,
 		"anecdot" : f.__anecdote__,
 		"vol_up" : f.__volumeUp__,
-		"vol_down" : f.__volumeDown__
+		"vol_down" : f.__volumeDown__,
+		"update" : f.__update__,
 }
 
 logs = log(op = 1)
