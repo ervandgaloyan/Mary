@@ -12,3 +12,4 @@
 потише : vol_down
 обнавить : update
 обнави : update
+сколько тебе лет : how_old

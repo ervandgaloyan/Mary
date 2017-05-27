@@ -149,7 +149,8 @@ text_to_func = {
 		"anecdot" : f.__anecdote__,
 		"vol_up" : f.__volumeUp__,
 		"vol_down" : f.__volumeDown__,
-		"update" : f.__update__,
+		"how_old" : f.__howOld__,
+		"update" : f.__update__
 }
 
 logs = log(op = 1)

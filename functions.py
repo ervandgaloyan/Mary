@@ -62,3 +62,9 @@ def __update__():
 	time.sleep(1)
 	m_f.restart()
 	return 0
+
+def __howOld__():
+	year = time.strftime('%y') if int(time.strftime('%W')) >= 48 else int(time.strftime('%y'))-1 
+	m_f.say("мне {}{}".format(year," лет"))
+
+	return 0
