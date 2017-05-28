@@ -3,6 +3,7 @@
 
 import main_func as m_f
 import random,time
+import os
 
 def __light_ON__():
 	m_f.log(wr = 'Light is ON')
@@ -66,5 +67,10 @@ def __update__():
 def __howOld__():
 	year = time.strftime('%y') if int(time.strftime('%W')) >= 48 else int(time.strftime('%y'))-1 
 	m_f.say("мне {}{}".format(year," лет"))
+	return 0
 
+def __sayTime__():
+	say = "сейчас {}{}{}{}".format(time.strftime('%H')," часов ",time.strftime('%M')," минут")
+	m_f.say(say)
+	os.remove("mp3/{}{}".format(m_f.ru_to_en(say),".mp3"))
 	return 0

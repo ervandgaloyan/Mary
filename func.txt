@@ -13,3 +13,5 @@
 обнавить : update
 обнави : update
 сколько тебе лет : how_old
+скажи время : say_time
+скажи месяц : say_month
