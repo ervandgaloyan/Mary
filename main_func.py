@@ -7,6 +7,7 @@ from pygame import mixer
 import functions as f
 import urllib.request, json 
 import os, sys
+import random
 
 dont_say = 0
 mixer.init()
@@ -139,6 +140,25 @@ def api_other_write(file,data):
 def restart():
 	python = sys.executable
 	os.execl(python,python, * sys.argv)
+
+def answer_search(query,d):
+	prcent = {}
+	max = 59
+	for l in d:
+		pr = 0
+		for q in query:
+			pr = 100//len(l.split()) + pr if l.find(q) != -1 else pr
+		prcent[d[l]] = pr
+	for p in prcent:
+		if prcent[p] > max:
+			max = prcent[p]	
+			ans = p
+
+	ans = random.choice(ans.split(',')) if max != 59 else False
+	del prcent
+	del max
+	del pr
+	return ans
 
 text_to_func = {
 		"light_on" : f.__light_ON__,
