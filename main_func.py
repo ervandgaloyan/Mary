@@ -10,6 +10,7 @@ import os, sys
 import random
 
 dont_say = 0
+
 mixer.init()
 mixer.music.set_volume(0.5)
 

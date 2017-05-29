@@ -14,4 +14,5 @@
 обнави : update
 сколько тебе лет : how_old
 скажи время : say_time
-скажи месяц : say_month
+какой месяц : say_month
+какой день : say_month

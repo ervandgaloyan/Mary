@@ -4,9 +4,10 @@ import time
 import speech_recognition as sr
 
 import main_func as m_f
-
+import interrupt
 import random
 
+interrupt.main()
 
 func_arr = m_f.txt_read('func.txt')
 answer = m_f.txt_read_dict('answers.txt')

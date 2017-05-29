@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import main_func as m_f
+import interrupt
 import random,time
 import os
 
@@ -26,6 +27,7 @@ def __close_all__():
 	m_f.log(wr = 'Close all')
 	m_f.log(cl = 1)
 	m_f.say('пока')
+	interrupt.stop()
 	sys.exit(0)
 	return 0
 def __anecdote__():
