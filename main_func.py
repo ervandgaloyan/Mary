@@ -95,12 +95,9 @@ def say(name_origin):
 		try:
 			mixer.music.load('mp3/'+name+'.mp3')
 		except:
-			#mixer.music.load('mp3/except_load.mp3')
-			#mixer.music.play()
 			say_update(name_origin)
+			time.sleep(1)
 			log(wr = "say_update - word : " + name_origin)
-			#while mixer.music.get_busy():
-			#	time.sleep(0.1)
 			try:
 				mixer.music.load('mp3/'+name+'.mp3')
 			except:
@@ -171,7 +168,8 @@ text_to_func = {
 		"vol_down" : f.__volumeDown__,
 		"how_old" : f.__howOld__,
 		"update" : f.__update__,
-		"say_time" : f.__sayTime__
+		"say_time" : f.__sayTime__,
+		"say_month" : f.__sayDate__
 }
 
 logs = log(op = 1)

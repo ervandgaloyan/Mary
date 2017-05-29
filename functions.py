@@ -74,3 +74,22 @@ def __sayTime__():
 	m_f.say(say)
 	os.remove("mp3/{}{}".format(m_f.ru_to_en(say),".mp3"))
 	return 0
+def __sayDate__():
+	months_ru = {
+		"01" : "Январь",
+		"02" : "Февраль",
+		"03" : "Март",
+		"04" : "Апрель",
+		"05" : "Май",
+		"06" : "Июнь",
+		"07" : "Июль",
+		"08" : "Август",
+		"09" : "Сентябрь",
+		"10" : "Октябрь",
+		"11" : "Ноябрь",
+		"12" : "Декабрь"
+	}
+	say = "день {}{}{}".format(time.strftime('%d'),", месяц, ",months_ru[time.strftime('%m')])
+	m_f.say(say)
+	os.remove("mp3/{}{}".format(m_f.ru_to_en(say),".mp3"))
+	return 0
