@@ -8,6 +8,7 @@ import functions as f
 import urllib.request, json 
 import os, sys
 import random
+import threading
 
 dont_say = 0
 
@@ -110,7 +111,41 @@ def say(name_origin):
 			while mixer.music.get_busy():
 				time.sleep(0.2)
 	return 0
+def say_wiki(name_origin):
+	global update
+	global l
+	update = name_origin
+	start = name_origin.find("(") if name_origin.find("(") >= 0 else 0 
+	stop = name_origin.find(")")+1 if name_origin.find(")") >= 0 else 0 
+	while start and stop :
+		name_origin = name_origin.replace(name_origin[start:stop]," ")
+		start = name_origin.find("(") if name_origin.find("(") >= 0 else 0 
+		stop = name_origin.find(")")+1 if name_origin.find(")") >= 0 else 0 
+	print(name_origin)
+	for w in name_origin:
+		name_origin = name_origin.replace(w," ") if w == "=" else name_origin
+	print(name_origin)
 
+	l = 1
+	t = threading.Timer(0.1,thread)
+	t.start()
+	say(name_origin[:150])
+	length = len(name_origin)//150+2 if len(name_origin) > 150 else 0
+	
+	start = 150
+	for l in range(2,length):
+		t = threading.Timer(0.1,thread)
+		t.start()
+		stop = name_origin.rfind(",",start,l*150)
+		stop = stop if stop != -1 else start+200
+		print(start)
+		print(stop)
+		say(name_origin[start:stop])
+		start = stop+1
+	return 0
+def thread():
+	say_update(update[l*150:(l+1)*150])
+	return 0
 def say_update(word):
 	from gtts import gTTS
 	try : 
