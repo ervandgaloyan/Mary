@@ -30,3 +30,4 @@ while True:
 		else:
 			answer_search = m_f.answer_search(rec.split(),ans_answer_search)
 			if answer_search: print(answer_search)
+			else: m_f.to_wiki(rec)

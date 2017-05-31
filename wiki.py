@@ -9,7 +9,7 @@ wiki.set_lang("ru")
 def paragraph(name):
 	try:
 		#print(wiki.summary(name,sentences=4))
-		m_f.say_wiki(wiki.summary(name,sentences=3))
+		m_f.say_wiki(wiki.summary(name,sentences=2))
 	except:
 		m_f.say("такой стати не существует")
 		time.sleep(1)
@@ -24,7 +24,6 @@ def search(name):
 		m_f.say("я нашла несколько статей")
 		for l in range(1,loop):
 			m_f.say(result[l])
-			time.sleep(2)
 		m_f.say("какой из них тебе нужен?")
 		rec = input(" - ")
 		parag = result[1] if rec == "первый" else result[2] if rec == "второй" else result[3] if rec == "третий" or rec == "последный" else 0
@@ -39,4 +38,4 @@ def search(name):
 
 	return 0
 #search("звездные войны")
-paragraph("звездные войны")
+#paragraph("звездные войны")
