@@ -5,6 +5,7 @@ import speech_recognition as sr
 import time
 from pygame import mixer
 import functions as f
+import forecast
 import wiki
 import urllib.request, json 
 import os, sys
@@ -196,7 +197,8 @@ text_to_func = {
 		"how_old" : f.__howOld__,
 		"update" : f.__update__,
 		"say_time" : f.__sayTime__,
-		"say_month" : f.__sayDate__
+		"say_month" : f.__sayDate__,
+		"weather" : f.__weather__
 }
 
 logs = log(op = 1)

@@ -16,3 +16,4 @@
 скажи время : say_time
 какой месяц : say_month
 какой день : say_month
+погода : weather

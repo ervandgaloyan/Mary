@@ -3,6 +3,7 @@
 
 import main_func as m_f
 import interrupt
+import forecast
 import random,time
 import os
 
@@ -95,3 +96,5 @@ def __sayDate__():
 	m_f.say(say)
 	os.remove("mp3/{}{}".format(m_f.ru_to_en(say),".mp3"))
 	return 0
+def __weather__():
+	print("сийчас " +str(forecast.temp)+ " градуса")
