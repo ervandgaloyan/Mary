@@ -44,5 +44,5 @@ def updated():
 		data = json.loads(url.read().decode())
 	if data['updated'] == '1':
 		m_f.api_update_status()
-	#u = threading.Timer(1.0,updated)
-	#u.start()
+	u = threading.Timer(2.0,updated)
+	u.start()

@@ -18,6 +18,9 @@ mixer.music.set_volume(0.5)
 
 r = sr.Recognizer()
 
+# --- 'api_update_status' --- #
+stat = []
+
 # RU to En #
 
 _rus_chars = u"ё!;%:?йцукенгшщзхъфывапролджэячсмитьбю.ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭ/ЯЧСМИТЬБЮ, "
@@ -187,16 +190,31 @@ def answer_search(query,d):
 def status_update(update,status):
 	with urllib.request.urlopen("http://web-world.gq/api/index.php?update={}&status={}".format(update,status)) as url:
 		data = json.loads(url.read().decode())
+	stat[update-1] = str(status)
 	return 0
-def api_update_status():
+def api_update_sich():
+	global stat
 	with urllib.request.urlopen("http://web-world.gq/api/index.php?get&all") as url:
 		data = json.loads(url.read().decode())
-	if data[0]['stat'] != s0:
-		if data[0]['stat'] == 1:
+	for l in data:
+		stat.append(l['stat'])
+	return 0
+def api_update_status():
+	global stat
+	with urllib.request.urlopen("http://web-world.gq/api/index.php?get&all") as url:
+		data = json.loads(url.read().decode())
+	if data[0]['stat'] != stat[0]:
+		if data[0]['stat'] == '1':
 			f.__door_open__()
 		else:
 			f.__door_close__()
-	#print(data)
+		stat[0] = data[0]['stat']
+	if data[3]['stat'] != stat[3]:
+		if data[3]['stat'] == '1':
+			f.__light_ON__()
+		else:
+			f.__light_OFF__()
+		stat[3] = data[3]['stat']
 	return 0	
 text_to_func = {
 		"light_on" : f.__light_ON__,

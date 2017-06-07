@@ -8,6 +8,7 @@ import interrupt
 import random
 
 interrupt.main()
+m_f.api_update_sich()
 interrupt.updated()
 
 func_arr = m_f.txt_read('func.txt')
