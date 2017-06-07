@@ -17,3 +17,5 @@
 какой месяц : say_month
 какой день : say_month
 погода : weather
+прогноз : forecast
+отключи ночной режим : night

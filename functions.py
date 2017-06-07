@@ -9,18 +9,22 @@ import os
 
 def __light_ON__():
 	m_f.log(wr = 'Light is ON')
+	m_f.status_update(4,1)
 	m_f.say('включила')
 	return 0
 def __light_OFF__():
 	m_f.log(wr = 'Light is OFF')
+	m_f.status_update(4,0)
 	m_f.say('выключила')
 	return 0
 def __door_open__():
 	m_f.log(wr = 'Door is opend')
+	m_f.status_update(1,1)
 	m_f.say('дверь открыта')
 	return 0
 def __door_close__():
 	m_f.log(wr = 'Door is closed')
+	m_f.status_update(1,0)
 	m_f.say('дверь закрыта')
 	return 0
 def __close_all__():
@@ -97,4 +101,12 @@ def __sayDate__():
 	os.remove("mp3/{}{}".format(m_f.ru_to_en(say),".mp3"))
 	return 0
 def __weather__():
-	print("сийчас " +str(forecast.temp)+ " градуса")
+	forecast.measure()
+	m_f.say("сийчас {} градусов, а влажность {}".format(forecast.temp , forecast.hum))
+def __forecast__():
+	forecast.weather_forecast()
+	m_f.say("завтра ожидается от {} до {} градусов {}".format(forecast.low, forecast.high, "тепла" if forecast.low > 0 else "мароза"))
+def __night__():
+	interrupt.hand_mode = True
+	m_f.say("отключила")
+	return 0 

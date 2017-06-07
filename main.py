@@ -8,6 +8,7 @@ import interrupt
 import random
 
 interrupt.main()
+interrupt.updated()
 
 func_arr = m_f.txt_read('func.txt')
 answer = m_f.txt_read_dict('answers.txt')

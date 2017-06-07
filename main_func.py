@@ -184,7 +184,14 @@ def answer_search(query,d):
 	del max
 	del pr
 	return ans
-
+def status_update(update,status):
+	with urllib.request.urlopen("http://web-world.gq/api/index.php?update={}&status={}".format(update,status)) as url:
+		data = json.loads(url.read().decode())
+	return 0
+def api_update_status():
+	with urllib.request.urlopen("http://web-world.gq/api/index.php?update={}&status={}".format(update,status)) as url:
+		data = json.loads(url.read().decode())
+	return 0	
 text_to_func = {
 		"light_on" : f.__light_ON__,
 		"light_off" : f.__light_OFF__,
@@ -198,7 +205,9 @@ text_to_func = {
 		"update" : f.__update__,
 		"say_time" : f.__sayTime__,
 		"say_month" : f.__sayDate__,
-		"weather" : f.__weather__
+		"weather" : f.__weather__,
+		"forecast" : f.__forecast__,
+		"night"	: f.__night__
 }
 
 logs = log(op = 1)
