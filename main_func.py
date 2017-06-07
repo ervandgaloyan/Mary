@@ -189,8 +189,14 @@ def status_update(update,status):
 		data = json.loads(url.read().decode())
 	return 0
 def api_update_status():
-	with urllib.request.urlopen("http://web-world.gq/api/index.php?update={}&status={}".format(update,status)) as url:
+	with urllib.request.urlopen("http://web-world.gq/api/index.php?get&all") as url:
 		data = json.loads(url.read().decode())
+	if data[0]['stat'] != s0:
+		if data[0]['stat'] == 1:
+			f.__door_open__()
+		else:
+			f.__door_close__()
+	#print(data)
 	return 0	
 text_to_func = {
 		"light_on" : f.__light_ON__,
