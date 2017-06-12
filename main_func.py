@@ -155,13 +155,14 @@ def set_vol(vol):
 	return mixer.music.set_volume(vol)	
 
 def api_other(file):
-	with urllib.request.urlopen("http://web-world.gq/api/other.php?file=" + file) as url:
+	with urllib.request.urlopen("http://192.168.224.171/api/other.php?file=" + file) as url:
 		data = json.loads(url.read().decode())
 	return data
 def api_other_write(file,data):
 	file = open(file+".txt", "w")
 	for d in data:
 		file.write(d["query"] + " : " + d["answer"] + "\n")
+	print(data)
 	file.close()
 	return 0
 
@@ -188,20 +189,20 @@ def answer_search(query,d):
 	del pr
 	return ans
 def status_update(update,status):
-	with urllib.request.urlopen("http://web-world.gq/api/index.php?update={}&status={}".format(update,status)) as url:
+	with urllib.request.urlopen("http://192.168.224.171/api/index.php?update={}&status={}".format(update,status)) as url:
 		data = json.loads(url.read().decode())
 	stat[update-1] = str(status)
 	return 0
 def api_update_sich():
 	global stat
-	with urllib.request.urlopen("http://web-world.gq/api/index.php?get&all") as url:
+	with urllib.request.urlopen("http://192.168.224.171/api/index.php?get&all") as url:
 		data = json.loads(url.read().decode())
 	for l in data:
 		stat.append(l['stat'])
 	return 0
 def api_update_status():
 	global stat
-	with urllib.request.urlopen("http://web-world.gq/api/index.php?get&all") as url:
+	with urllib.request.urlopen("http://192.168.224.171/api/index.php?get&all") as url:
 		data = json.loads(url.read().decode())
 	if data[0]['stat'] != stat[0]:
 		if data[0]['stat'] == '1':
@@ -235,4 +236,3 @@ text_to_func = {
 }
 
 logs = log(op = 1)
-

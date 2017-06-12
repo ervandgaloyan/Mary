@@ -40,7 +40,7 @@ def stop():
 	t.join()
 
 def updated():
-	with urllib.request.urlopen("http://web-world.gq/api/index.php?updated=test") as url:
+	with urllib.request.urlopen("http://192.168.224.171/api/index.php?updated=test") as url:
 		data = json.loads(url.read().decode())
 	if data['updated'] == '1':
 		m_f.api_update_status()
